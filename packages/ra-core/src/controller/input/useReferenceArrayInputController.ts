@@ -30,7 +30,7 @@ import { UseQueryOptions } from 'react-query';
  * @return {Object} controllerProps Fetched data and callbacks for the ReferenceArrayInput components
  */
 export const useReferenceArrayInputController = <
-    RecordType extends RaRecord = any
+    RecordType extends RaRecord = RaRecord
 >(
     props: UseReferenceArrayInputParams<RecordType>
 ): ChoicesContextValue<RecordType> => {
@@ -173,7 +173,7 @@ export const useReferenceArrayInputController = <
 const EmptyArray = [];
 
 // concatenate and deduplicate two lists of records
-const mergeReferences = <RecordType extends RaRecord = any>(
+const mergeReferences = <RecordType extends RaRecord = RaRecord>(
     ref1: RecordType[],
     ref2: RecordType[]
 ): RecordType[] => {
@@ -189,7 +189,7 @@ const mergeReferences = <RecordType extends RaRecord = any>(
 };
 
 export interface UseReferenceArrayInputParams<
-    RecordType extends RaRecord = any
+    RecordType extends RaRecord = RaRecord
 > {
     debounce?: number;
     filter?: FilterPayload;

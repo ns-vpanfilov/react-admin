@@ -90,7 +90,7 @@ export default async (
 
     return {
         // read methods are just proxies to FakeRest
-        getList: <RecordType extends RaRecord = any>(
+        getList: <RecordType extends RaRecord = RaRecord>(
             resource: string,
             params: GetListParams
         ) => {
@@ -105,15 +105,15 @@ export default async (
                     }
                 });
         },
-        getOne: <RecordType extends RaRecord = any>(
+        getOne: <RecordType extends RaRecord = RaRecord>(
             resource: string,
             params: GetOneParams<any>
         ) => baseDataProvider.getOne<RecordType>(resource, params),
-        getMany: <RecordType extends RaRecord = any>(
+        getMany: <RecordType extends RaRecord = RaRecord>(
             resource: string,
             params: GetManyParams
         ) => baseDataProvider.getMany<RecordType>(resource, params),
-        getManyReference: <RecordType extends RaRecord = any>(
+        getManyReference: <RecordType extends RaRecord = RaRecord>(
             resource: string,
             params: GetManyReferenceParams
         ) =>
@@ -129,7 +129,7 @@ export default async (
                 }),
 
         // update methods need to persist changes in localForage
-        update: <RecordType extends RaRecord = any>(
+        update: <RecordType extends RaRecord = RaRecord>(
             resource: string,
             params: UpdateParams<any>
         ) => {
@@ -172,7 +172,7 @@ export default async (
                     return response;
                 });
         },
-        delete: <RecordType extends RaRecord = any>(
+        delete: <RecordType extends RaRecord = RaRecord>(
             resource: string,
             params: DeleteParams<RecordType>
         ) => {

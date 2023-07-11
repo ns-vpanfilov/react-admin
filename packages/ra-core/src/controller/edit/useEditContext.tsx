@@ -22,7 +22,7 @@ import { EditControllerResult } from './useEditController';
  * @see useEditController for how it is filled
  *
  */
-export const useEditContext = <RecordType extends RaRecord = any>(
+export const useEditContext = <RecordType extends RaRecord = RaRecord>(
     props?: Partial<EditControllerResult<RecordType>>
 ): EditControllerResult<RecordType> => {
     // Can't find a way to specify the RecordType when EditContext is declared

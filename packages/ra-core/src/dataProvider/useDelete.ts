@@ -79,7 +79,7 @@ import { useEvent } from '../util';
  *                    \-- data is Product
  */
 export const useDelete = <
-    RecordType extends RaRecord = any,
+    RecordType extends RaRecord = RaRecord,
     MutationError = unknown
 >(
     resource?: string,
@@ -134,7 +134,11 @@ export const useDelete = <
         );
         queryClient.setQueriesData(
             [resource, 'getInfiniteList'],
-            (res: UseInfiniteQueryResult<GetInfiniteListResult>['data']) => {
+            (
+                res: UseInfiniteQueryResult<
+                    GetInfiniteListResult<RecordType>
+                >['data']
+            ) => {
                 if (!res || !res.pages) return res;
                 return {
                     ...res,
@@ -421,7 +425,7 @@ export const useDelete = <
 
 type Snapshot = [key: QueryKey, value: any][];
 
-export interface UseDeleteMutateParams<RecordType extends RaRecord = any> {
+export interface UseDeleteMutateParams<RecordType extends RaRecord = RaRecord> {
     resource?: string;
     id?: RecordType['id'];
     data?: Partial<RecordType>;
@@ -430,7 +434,7 @@ export interface UseDeleteMutateParams<RecordType extends RaRecord = any> {
 }
 
 export type UseDeleteOptions<
-    RecordType extends RaRecord = any,
+    RecordType extends RaRecord = RaRecord,
     MutationError = unknown
 > = UseMutationOptions<
     RecordType,
@@ -439,7 +443,7 @@ export type UseDeleteOptions<
 > & { mutationMode?: MutationMode };
 
 export type UseDeleteResult<
-    RecordType extends RaRecord = any,
+    RecordType extends RaRecord = RaRecord,
     MutationError = unknown
 > = [
     (

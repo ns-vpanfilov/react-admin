@@ -60,7 +60,7 @@ import { useDataProvider } from './useDataProvider';
  * };
  */
 
-export const useInfiniteGetList = <RecordType extends RaRecord = any>(
+export const useInfiniteGetList = <RecordType extends RaRecord = RaRecord>(
     resource: string,
     params: Partial<GetListParams> = {},
     options?: UseInfiniteQueryOptions<GetInfiniteListResult<RecordType>, Error>
@@ -157,7 +157,7 @@ export const useInfiniteGetList = <RecordType extends RaRecord = any>(
 };
 
 export type UseInfiniteGetListHookValue<
-    RecordType extends RaRecord = any
+    RecordType extends RaRecord = RaRecord
 > = UseInfiniteQueryResult<GetInfiniteListResult<RecordType>, Error> & {
     total?: number;
     pageParam?: number;

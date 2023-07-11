@@ -126,7 +126,7 @@ export const withLifecycleCallbacks = (
     return {
         ...dataProvider,
 
-        getList: async function <RecordType extends RaRecord = any>(
+        getList: async function <RecordType extends RaRecord = RaRecord>(
             resource: string,
             params: GetListParams
         ) {
@@ -166,7 +166,7 @@ export const withLifecycleCallbacks = (
             return result;
         },
 
-        getOne: async function <RecordType extends RaRecord = any>(
+        getOne: async function <RecordType extends RaRecord = RaRecord>(
             resource: string,
             params: GetOneParams<RecordType>
         ) {
@@ -202,7 +202,7 @@ export const withLifecycleCallbacks = (
             return result;
         },
 
-        getMany: async function <RecordType extends RaRecord = any>(
+        getMany: async function <RecordType extends RaRecord = RaRecord>(
             resource: string,
             params: GetManyParams
         ) {
@@ -242,10 +242,9 @@ export const withLifecycleCallbacks = (
             return result;
         },
 
-        getManyReference: async function <RecordType extends RaRecord = any>(
-            resource: string,
-            params: GetManyReferenceParams
-        ) {
+        getManyReference: async function <
+            RecordType extends RaRecord = RaRecord
+        >(resource: string, params: GetManyReferenceParams) {
             let newParams = params;
             const beforeGetManyReferenceHandlers = handlers.filter(
                 h => h.resource === resource && h.beforeGetManyReference
@@ -285,7 +284,8 @@ export const withLifecycleCallbacks = (
             return result;
         },
 
-        update: async function <RecordType extends RaRecord = any>(
+        // @ts-ignore
+        update: async function <RecordType extends RaRecord = RaRecord>(
             resource: string,
             params: UpdateParams<RecordType>
         ) {
@@ -330,7 +330,7 @@ export const withLifecycleCallbacks = (
             return result;
         },
 
-        create: async function <RecordType extends RaRecord = any>(
+        create: async function <RecordType extends RaRecord = RaRecord>(
             resource: string,
             params: CreateParams<RecordType>
         ) {
@@ -375,7 +375,7 @@ export const withLifecycleCallbacks = (
             return result;
         },
 
-        delete: async function <RecordType extends RaRecord = any>(
+        delete: async function <RecordType extends RaRecord = RaRecord>(
             resource: string,
             params: DeleteParams<RecordType>
         ) {
@@ -402,7 +402,7 @@ export const withLifecycleCallbacks = (
             return result;
         },
 
-        updateMany: async function <RecordType extends RaRecord = any>(
+        updateMany: async function <RecordType extends RaRecord = RaRecord>(
             resource: string,
             params: UpdateManyParams<RecordType>
         ) {
@@ -457,7 +457,7 @@ export const withLifecycleCallbacks = (
             return result;
         },
 
-        deleteMany: async function <RecordType extends RaRecord = any>(
+        deleteMany: async function <RecordType extends RaRecord = RaRecord>(
             resource: string,
             params: DeleteManyParams<RecordType>
         ) {

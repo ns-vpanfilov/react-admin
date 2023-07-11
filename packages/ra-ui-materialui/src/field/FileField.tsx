@@ -23,9 +23,7 @@ import { Link } from '@mui/material';
  *     <a href="doc.pdf" title="Presentation">Presentation</a>
  * </div>
  */
-export const FileField = <
-    RecordType extends Record<string, unknown> = Record<string, any>
->(
+export const FileField = <RecordType extends {} = Record<string, any>>(
     props: FileFieldProps<RecordType>
 ) => {
     const {
@@ -105,9 +103,8 @@ export const FileField = <
     );
 };
 
-export interface FileFieldProps<
-    RecordType extends Record<string, unknown> = Record<string, any>
-> extends FieldProps<RecordType> {
+export interface FileFieldProps<RecordType extends {} = Record<string, any>>
+    extends FieldProps<RecordType> {
     src?: string;
     title?: string;
     target?: string;

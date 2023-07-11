@@ -35,7 +35,7 @@ import { listFieldTypes } from './listFieldTypes';
  *     </Admin>
  * );
  */
-export const ListGuesser = <RecordType extends RaRecord = any>(
+export const ListGuesser = <RecordType extends RaRecord = RaRecord>(
     props: Omit<ListProps, 'children'>
 ) => {
     const {

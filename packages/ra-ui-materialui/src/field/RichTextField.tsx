@@ -24,9 +24,7 @@ import { genericMemo } from './genericMemo';
  * @example // remove all tags and output text only
  * <RichTextField source="description" stripTags />
  */
-const RichTextFieldImpl = <
-    RecordType extends Record<string, unknown> = Record<string, any>
->(
+const RichTextFieldImpl = <RecordType extends {} = Record<string, any>>(
     props: RichTextFieldProps<RecordType>
 ) => {
     const {
@@ -82,9 +80,8 @@ export type PurifyOptions = purify.Config & {
     RETURN_DOM?: false | undefined;
 };
 
-export interface RichTextFieldProps<
-    RecordType extends Record<string, unknown> = Record<string, any>
-> extends FieldProps<RecordType>,
+export interface RichTextFieldProps<RecordType extends {} = Record<string, any>>
+    extends FieldProps<RecordType>,
         Omit<TypographyProps, 'textAlign'> {
     stripTags?: boolean;
     purifyOptions?: PurifyOptions;

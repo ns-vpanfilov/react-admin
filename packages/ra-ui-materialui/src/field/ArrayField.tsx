@@ -75,9 +75,7 @@ import { genericMemo } from './genericMemo';
  *
  * @see useListContext
  */
-const ArrayFieldImpl = <
-    RecordType extends Record<string, unknown> = Record<string, any>
->(
+const ArrayFieldImpl = <RecordType extends {} = Record<string, any>>(
     props: ArrayFieldProps<RecordType>
 ) => {
     const { children, resource, source, perPage, sort, filter } = props;
@@ -97,9 +95,8 @@ ArrayFieldImpl.displayName = 'ArrayFieldImpl';
 
 export const ArrayField = genericMemo(ArrayFieldImpl);
 
-export interface ArrayFieldProps<
-    RecordType extends Record<string, unknown> = Record<string, any>
-> extends FieldProps<RecordType> {
+export interface ArrayFieldProps<RecordType extends {} = Record<string, any>>
+    extends FieldProps<RecordType> {
     children: ReactNode;
     perPage?: number;
     sort?: SortPayload;

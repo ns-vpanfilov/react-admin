@@ -15,7 +15,7 @@ import {
 
 import { Button, ButtonProps } from './Button';
 
-export const DeleteWithUndoButton = <RecordType extends RaRecord = any>(
+export const DeleteWithUndoButton = <RecordType extends RaRecord = RaRecord>(
     props: DeleteWithUndoButtonProps<RecordType>
 ) => {
     const {
@@ -57,7 +57,7 @@ export const DeleteWithUndoButton = <RecordType extends RaRecord = any>(
 const defaultIcon = <ActionDelete />;
 
 export interface DeleteWithUndoButtonProps<
-    RecordType extends RaRecord = any,
+    RecordType extends RaRecord = RaRecord,
     MutationOptionsError = unknown
 > extends ButtonProps {
     icon?: ReactElement;

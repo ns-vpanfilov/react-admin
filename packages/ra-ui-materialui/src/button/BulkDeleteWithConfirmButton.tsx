@@ -22,8 +22,11 @@ import { Button, ButtonProps } from './Button';
 import { BulkActionProps } from '../types';
 import { UseMutationOptions } from 'react-query';
 
-export const BulkDeleteWithConfirmButton = (
-    props: BulkDeleteWithConfirmButtonProps
+export const BulkDeleteWithConfirmButton = <
+    RecordType extends RaRecord = RaRecord,
+    MutationOptionsError = unknown
+>(
+    props: BulkDeleteWithConfirmButtonProps<RecordType, MutationOptionsError>
 ) => {
     const {
         confirmTitle = 'ra.message.bulk_delete_title',
@@ -36,13 +39,13 @@ export const BulkDeleteWithConfirmButton = (
         ...rest
     } = props;
     const { meta: mutationMeta, ...otherMutationOptions } = mutationOptions;
-    const { selectedIds, onUnselectItems } = useListContext(props);
+    const { selectedIds, onUnselectItems } = useListContext<RecordType>(props);
     const [isOpen, setOpen] = useSafeSetState(false);
     const notify = useNotify();
     const resource = useResourceContext(props);
     const refresh = useRefresh();
     const translate = useTranslate();
-    const [deleteMany, { isLoading }] = useDeleteMany(
+    const [deleteMany, { isLoading }] = useDeleteMany<RecordType>(
         resource,
         { ids: selectedIds, meta: mutationMeta },
         {
@@ -146,7 +149,7 @@ const sanitizeRestProps = ({
 >) => rest;
 
 export interface BulkDeleteWithConfirmButtonProps<
-    RecordType extends RaRecord = any,
+    RecordType extends RaRecord = RaRecord,
     MutationOptionsError = unknown
 > extends BulkActionProps,
         ButtonProps {
@@ -155,7 +158,7 @@ export interface BulkDeleteWithConfirmButtonProps<
     icon?: ReactElement;
     mutationMode: MutationMode;
     mutationOptions?: UseMutationOptions<
-        RecordType,
+        RecordType['id'][],
         MutationOptionsError,
         DeleteManyParams<RecordType>
     > & { meta?: any };

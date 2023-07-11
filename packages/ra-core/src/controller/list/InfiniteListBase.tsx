@@ -43,7 +43,7 @@ import { InfinitePaginationContext } from './InfinitePaginationContext';
  *     </ListBase>
  * );
  */
-export const InfiniteListBase = <RecordType extends RaRecord = any>({
+export const InfiniteListBase = <RecordType extends RaRecord = RaRecord>({
     children,
     ...props
 }: InfiniteListControllerProps<RecordType> & { children: ReactNode }) => {

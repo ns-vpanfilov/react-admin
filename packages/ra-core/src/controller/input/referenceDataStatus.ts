@@ -58,7 +58,9 @@ export const REFERENCES_STATUS_READY = 'REFERENCES_STATUS_READY';
 export const REFERENCES_STATUS_INCOMPLETE = 'REFERENCES_STATUS_INCOMPLETE';
 export const REFERENCES_STATUS_EMPTY = 'REFERENCES_STATUS_EMPTY';
 
-export const getSelectedReferencesStatus = <RecordType extends RaRecord = any>(
+export const getSelectedReferencesStatus = <
+    RecordType extends RaRecord = RaRecord
+>(
     field: Pick<ControllerRenderProps, 'value'>,
     referenceRecords: RecordType[]
 ) =>
@@ -68,14 +70,14 @@ export const getSelectedReferencesStatus = <RecordType extends RaRecord = any>(
         ? REFERENCES_STATUS_INCOMPLETE
         : REFERENCES_STATUS_EMPTY;
 
-interface GetStatusForArrayInputParams<RecordType extends RaRecord = any> {
+interface GetStatusForArrayInputParams<RecordType extends RaRecord = RaRecord> {
     field: ControllerRenderProps;
     matchingReferences: RecordType[] | MatchingReferencesError;
     referenceRecords: RecordType[];
     translate: Translate;
 }
 
-export const getStatusForArrayInput = <RecordType extends RaRecord = any>({
+export const getStatusForArrayInput = <RecordType extends RaRecord = RaRecord>({
     field,
     matchingReferences,
     referenceRecords,

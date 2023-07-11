@@ -58,7 +58,7 @@ import { genericMemo } from './genericMemo';
  * backward-compatibility is still kept
  */
 export const ReferenceField = <
-    RecordType extends Record<string, unknown> = Record<string, any>,
+    RecordType extends {} = Record<string, any>,
     ReferenceRecordType extends RaRecord = RaRecord
 >(
     props: ReferenceFieldProps<RecordType, ReferenceRecordType>
@@ -110,7 +110,7 @@ ReferenceField.defaultProps = {
 };
 
 export interface ReferenceFieldProps<
-    RecordType extends Record<string, unknown> = Record<string, any>,
+    RecordType extends {} = Record<string, any>,
     ReferenceRecordType extends RaRecord = RaRecord
 > extends Omit<FieldProps<RecordType>, 'source'>,
         Required<Pick<FieldProps<RecordType>, 'source'>> {
@@ -129,7 +129,7 @@ export interface ReferenceFieldProps<
  * which cannot be called conditionally when get(record, source) is empty.
  */
 export const NonEmptyReferenceField = <
-    RecordType extends Record<string, unknown> = Record<string, any>,
+    RecordType extends {} = Record<string, any>,
     ReferenceRecordType extends RaRecord = RaRecord
 >({
     children,
@@ -267,7 +267,7 @@ ReferenceFieldView.propTypes = {
 };
 
 export interface ReferenceFieldViewProps<
-    RecordType extends Record<string, unknown> = Record<string, any>,
+    RecordType extends {} = Record<string, any>,
     ReferenceRecordType extends RaRecord = RaRecord
 > extends FieldProps<RecordType>,
         UseReferenceResult {

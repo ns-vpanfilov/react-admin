@@ -45,7 +45,7 @@ import { SaveContextValue, useMutationMiddlewares } from '../saveContext';
  * }
  */
 export const useEditController = <
-    RecordType extends RaRecord = any,
+    RecordType extends RaRecord = RaRecord,
     MutationOptionsError = unknown
 >(
     props: EditControllerProps<RecordType, MutationOptionsError> = {}
@@ -245,7 +245,7 @@ export const useEditController = <
 };
 
 export interface EditControllerProps<
-    RecordType extends RaRecord = any,
+    RecordType extends RaRecord = RaRecord,
     MutationOptionsError = unknown
 > {
     disableAuthentication?: boolean;
@@ -263,7 +263,7 @@ export interface EditControllerProps<
     [key: string]: any;
 }
 
-export interface EditControllerResult<RecordType extends RaRecord = any>
+export interface EditControllerResult<RecordType extends RaRecord = RaRecord>
     extends SaveContextValue {
     // Necessary for actions (EditActions) which expect a data prop containing the record
     // @deprecated - to be removed in 4.0d

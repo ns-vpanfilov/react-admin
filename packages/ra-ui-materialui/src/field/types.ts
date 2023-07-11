@@ -7,9 +7,7 @@ type TextAlign = TableCellProps['align'];
 type SortOrder = 'ASC' | 'DESC';
 type AnyString = string & {};
 
-export interface FieldProps<
-    RecordType extends Record<string, unknown> = Record<string, any>
-> {
+export interface FieldProps<RecordType extends {} = Record<string, any>> {
     sortBy?: Call<Objects.AllPaths, RecordType> | AnyString;
     sortByOrder?: SortOrder;
     source?: Call<Objects.AllPaths, RecordType> extends never
@@ -35,7 +33,7 @@ export interface FieldProps<
  * @deprecated use FieldProps instead
  */
 export interface PublicFieldProps<
-    RecordType extends Record<string, unknown> = Record<string, any>,
+    RecordType extends {} = Record<string, any>,
     SortByType = unknown
 > {
     sortBy?: unknown extends SortByType

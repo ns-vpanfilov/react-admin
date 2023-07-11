@@ -75,9 +75,7 @@ import { genericMemo } from './genericMemo';
  *
  * **Tip**: <ReferenceField> sets `translateChoice` to false by default.
  */
-const SelectFieldImpl = <
-    RecordType extends Record<string, unknown> = Record<string, any>
->(
+const SelectFieldImpl = <RecordType extends {} = Record<string, any>>(
     props: SelectFieldProps<RecordType>
 ) => {
     const {
@@ -151,8 +149,7 @@ SelectFieldImpl.displayName = 'SelectFieldImpl';
 
 export const SelectField = genericMemo(SelectFieldImpl);
 
-export interface SelectFieldProps<
-    RecordType extends Record<string, unknown> = Record<string, any>
-> extends ChoicesProps,
+export interface SelectFieldProps<RecordType extends {} = Record<string, any>>
+    extends ChoicesProps,
         FieldProps<RecordType>,
         Omit<TypographyProps, 'textAlign'> {}

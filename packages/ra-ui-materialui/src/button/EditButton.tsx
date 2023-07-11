@@ -26,7 +26,7 @@ import { Button, ButtonProps } from './Button';
  *     <EditButton label="Edit comment" />
  * );
  */
-export const EditButton = <RecordType extends RaRecord = any>(
+export const EditButton = <RecordType extends RaRecord = RaRecord>(
     props: EditButtonProps<RecordType>
 ) => {
     const {
@@ -66,7 +66,7 @@ const defaultIcon = <ContentCreate />;
 // useful to prevent click bubbling in a datagrid with rowClick
 const stopPropagation = e => e.stopPropagation();
 
-interface Props<RecordType extends RaRecord = any> {
+interface Props<RecordType extends RaRecord = RaRecord> {
     icon?: ReactElement;
     label?: string;
     record?: RecordType;
@@ -74,7 +74,7 @@ interface Props<RecordType extends RaRecord = any> {
     scrollToTop?: boolean;
 }
 
-export type EditButtonProps<RecordType extends RaRecord = any> = Props<
+export type EditButtonProps<RecordType extends RaRecord = RaRecord> = Props<
     RecordType
 > &
     ButtonProps;

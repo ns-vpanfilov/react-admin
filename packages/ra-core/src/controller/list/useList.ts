@@ -51,7 +51,7 @@ const refetch = () => {
  * @param {SortPayload} props.sort: Optional. The initial sort (field and order)
  * @param {filterCallback} prop.filterCallback Optional. A function that allows you to make a custom filter
  */
-export const useList = <RecordType extends RaRecord = any>(
+export const useList = <RecordType extends RaRecord = RaRecord>(
     props: UseListOptions<RecordType>
 ): UseListValue<RecordType> => {
     const {
@@ -265,7 +265,7 @@ export const useList = <RecordType extends RaRecord = any>(
     };
 };
 
-export interface UseListOptions<RecordType extends RaRecord = any> {
+export interface UseListOptions<RecordType extends RaRecord = RaRecord> {
     data?: RecordType[];
     error?: any;
     filter?: FilterPayload;
@@ -279,7 +279,7 @@ export interface UseListOptions<RecordType extends RaRecord = any> {
 }
 
 export type UseListValue<
-    RecordType extends RaRecord = any
+    RecordType extends RaRecord = RaRecord
 > = ListControllerResult<RecordType>;
 
 const defaultFilter = {};

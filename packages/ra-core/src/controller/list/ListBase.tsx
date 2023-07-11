@@ -39,7 +39,7 @@ import { ListContextProvider } from './ListContextProvider';
  *     </ListBase>
  * );
  */
-export const ListBase = <RecordType extends RaRecord = any>({
+export const ListBase = <RecordType extends RaRecord = RaRecord>({
     children,
     ...props
 }: ListControllerProps<RecordType> & { children: ReactNode }) => (

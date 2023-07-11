@@ -10,7 +10,7 @@ import { RaRecord } from '../../types';
  *
  * @returns {Object} Destructure as [selectedIds, { select, toggle, clearSelection }].
  */
-export const useRecordSelection = <RecordType extends RaRecord = any>(
+export const useRecordSelection = <RecordType extends RaRecord = RaRecord>(
     resource: string
 ): [
     RecordType['id'][],

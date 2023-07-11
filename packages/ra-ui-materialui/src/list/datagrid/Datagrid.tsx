@@ -1,15 +1,16 @@
 import * as React from 'react';
 import {
     cloneElement,
-    createElement,
-    isValidElement,
-    useCallback,
-    useRef,
-    useEffect,
-    FC,
     ComponentType,
+    createElement,
+    FC,
+    forwardRef,
+    isValidElement,
     ReactElement,
+    useCallback,
+    useEffect,
     useMemo,
+    useRef,
 } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -35,6 +36,12 @@ import { BulkDeleteButton } from '../../button';
 import { ListNoResults } from '../ListNoResults';
 
 const defaultBulkActionButtons = <BulkDeleteButton />;
+
+interface WithForwardRefDatagrid extends FC<DatagridProps<RaRecord>> {
+    <RecordType extends RaRecord = RaRecord>(
+        props: DatagridProps<RecordType>
+    ): ReturnType<React.FC<DatagridProps<RecordType>>>;
+}
 
 /**
  * The Datagrid component renders a list of records as a table.
@@ -114,7 +121,7 @@ const defaultBulkActionButtons = <BulkDeleteButton />;
  *     );
  * }
  */
-export const Datagrid: FC<DatagridProps> = React.forwardRef((props, ref) => {
+export const Datagrid: WithForwardRefDatagrid = forwardRef((props, ref) => {
     const {
         optimized = false,
         body = optimized ? PureDatagridBody : DatagridBody,
@@ -327,7 +334,7 @@ Datagrid.propTypes = {
     expandSingle: PropTypes.bool,
 };
 
-export interface DatagridProps<RecordType extends RaRecord = any>
+export interface DatagridProps<RecordType extends RaRecord = RaRecord>
     extends Omit<TableProps, 'size' | 'classes' | 'onSelect'> {
     body?: ReactElement | ComponentType;
     className?: string;

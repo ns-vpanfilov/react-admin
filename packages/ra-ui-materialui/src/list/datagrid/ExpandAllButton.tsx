@@ -2,13 +2,13 @@ import * as React from 'react';
 import { memo } from 'react';
 import IconButton from '@mui/material/IconButton';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useTranslate, useExpandAll } from 'ra-core';
+import { useTranslate, useExpandAll, Identifier } from 'ra-core';
 import { DatagridClasses } from './useDatagridStyles';
 import clsx from 'clsx';
 
 interface ExpandAllButtonProps {
     resource: string;
-    ids: string[] | number[];
+    ids: Identifier[];
 }
 
 const ExpandAllButton = ({ resource, ids }: ExpandAllButtonProps) => {

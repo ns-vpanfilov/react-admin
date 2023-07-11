@@ -90,7 +90,7 @@ import { RaRecord } from '../../types';
  *     );
  * }
  */
-export const useListContext = <RecordType extends RaRecord = any>(
+export const useListContext = <RecordType extends RaRecord = RaRecord>(
     props?: any
 ): ListControllerResult<RecordType> => {
     const context = useContext(ListContext);

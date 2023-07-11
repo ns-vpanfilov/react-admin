@@ -77,7 +77,7 @@ import { Identifier } from '..';
  * };
  */
 export const useUpdateMany = <
-    RecordType extends RaRecord = any,
+    RecordType extends RaRecord = RaRecord,
     MutationError = unknown
 >(
     resource?: string,
@@ -147,7 +147,11 @@ export const useUpdateMany = <
         );
         queryClient.setQueriesData(
             [resource, 'getInfiniteList'],
-            (res: UseInfiniteQueryResult<GetInfiniteListResult>['data']) =>
+            (
+                res: UseInfiniteQueryResult<
+                    GetInfiniteListResult<RecordType>
+                >['data']
+            ) =>
                 res && res.pages
                     ? {
                           ...res,
@@ -443,7 +447,9 @@ export const useUpdateMany = <
 
 type Snapshot = [key: QueryKey, value: any][];
 
-export interface UseUpdateManyMutateParams<RecordType extends RaRecord = any> {
+export interface UseUpdateManyMutateParams<
+    RecordType extends RaRecord = RaRecord
+> {
     resource?: string;
     ids?: Array<RecordType['id']>;
     data?: Partial<RecordType>;
@@ -452,7 +458,7 @@ export interface UseUpdateManyMutateParams<RecordType extends RaRecord = any> {
 }
 
 export type UseUpdateManyOptions<
-    RecordType extends RaRecord = any,
+    RecordType extends RaRecord = RaRecord,
     MutationError = unknown
 > = UseMutationOptions<
     Array<RecordType['id']>,
@@ -461,7 +467,7 @@ export type UseUpdateManyOptions<
 > & { mutationMode?: MutationMode };
 
 export type UseUpdateManyResult<
-    RecordType extends RaRecord = any,
+    RecordType extends RaRecord = RaRecord,
     TReturnPromise extends boolean = boolean,
     MutationError = unknown
 > = [

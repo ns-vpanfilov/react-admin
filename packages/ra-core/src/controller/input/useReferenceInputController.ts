@@ -45,8 +45,10 @@ const defaultReferenceSource = (resource: string, source: string) =>
  *      },
  * });
  */
-export const useReferenceInputController = <RecordType extends RaRecord = any>(
-    props: UseReferenceInputControllerParams
+export const useReferenceInputController = <
+    RecordType extends RaRecord = RaRecord
+>(
+    props: UseReferenceInputControllerParams<RecordType>
 ): ChoicesContextValue<RecordType> => {
     const {
         debounce,
@@ -187,7 +189,7 @@ export const useReferenceInputController = <RecordType extends RaRecord = any>(
 };
 
 export interface UseReferenceInputControllerParams<
-    RecordType extends RaRecord = any
+    RecordType extends RaRecord = RaRecord
 > {
     debounce?: number;
     filter?: FilterPayload;

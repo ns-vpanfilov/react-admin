@@ -18,8 +18,10 @@ import { Button, ButtonProps } from './Button';
 import { BulkActionProps } from '../types';
 import { UseMutationOptions } from 'react-query';
 
-export const BulkDeleteWithUndoButton = (
-    props: BulkDeleteWithUndoButtonProps
+export const BulkDeleteWithUndoButton = <
+    RecordType extends RaRecord = RaRecord
+>(
+    props: BulkDeleteWithUndoButtonProps<RecordType>
 ) => {
     const {
         label = 'ra.action.delete',
@@ -29,12 +31,12 @@ export const BulkDeleteWithUndoButton = (
         ...rest
     } = props;
     const { meta: mutationMeta, ...otherMutationOptions } = mutationOptions;
-    const { selectedIds, onUnselectItems } = useListContext(props);
+    const { selectedIds, onUnselectItems } = useListContext<RecordType>(props);
 
     const notify = useNotify();
     const resource = useResourceContext(props);
     const refresh = useRefresh();
-    const [deleteMany, { isLoading }] = useDeleteMany();
+    const [deleteMany, { isLoading }] = useDeleteMany<RecordType>();
 
     const handleClick = e => {
         deleteMany(
@@ -100,13 +102,13 @@ const sanitizeRestProps = ({
 }: Omit<BulkDeleteWithUndoButtonProps, 'resource' | 'icon'>) => rest;
 
 export interface BulkDeleteWithUndoButtonProps<
-    RecordType extends RaRecord = any,
+    RecordType extends RaRecord = RaRecord,
     MutationOptionsError = unknown
 > extends BulkActionProps,
         ButtonProps {
     icon?: ReactElement;
     mutationOptions?: UseMutationOptions<
-        RecordType,
+        RecordType['id'][],
         MutationOptionsError,
         DeleteManyParams<RecordType>
     > & { meta?: any };

@@ -64,7 +64,7 @@ import { ListNoResults } from '../ListNoResults';
  *     </List>
  * );
  */
-export const SimpleList = <RecordType extends RaRecord = any>(
+export const SimpleList = <RecordType extends RaRecord = RaRecord>(
     props: SimpleListProps<RecordType>
 ) => {
     const {
@@ -256,12 +256,12 @@ SimpleList.propTypes = {
     rowStyle: PropTypes.func,
 };
 
-export type FunctionToElement<RecordType extends RaRecord = any> = (
+export type FunctionToElement<RecordType extends RaRecord = RaRecord> = (
     record: RecordType,
     id: Identifier
 ) => ReactNode;
 
-export interface SimpleListProps<RecordType extends RaRecord = any>
+export interface SimpleListProps<RecordType extends RaRecord = RaRecord>
     extends Omit<ListProps, 'classes'> {
     className?: string;
     empty?: ReactElement;

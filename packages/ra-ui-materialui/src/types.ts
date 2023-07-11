@@ -60,7 +60,7 @@ export interface CreateProps<
     sx?: SxProps;
 }
 
-export interface ShowProps<RecordType extends RaRecord = any> {
+export interface ShowProps<RecordType extends RaRecord = RaRecord> {
     actions?: ReactElement | false;
     aside?: ReactElement;
     children: ReactNode;

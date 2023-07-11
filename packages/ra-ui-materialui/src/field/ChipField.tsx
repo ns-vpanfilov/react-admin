@@ -10,9 +10,7 @@ import { sanitizeFieldRestProps } from './sanitizeFieldRestProps';
 import { FieldProps, fieldPropTypes } from './types';
 import { genericMemo } from './genericMemo';
 
-const ChipFieldImpl = <
-    RecordType extends Record<string, unknown> = Record<string, any>
->(
+const ChipFieldImpl = <RecordType extends {} = Record<string, any>>(
     props: ChipFieldProps<RecordType>
 ) => {
     const { className, source, emptyText, ...rest } = props;
@@ -51,9 +49,8 @@ ChipFieldImpl.displayName = 'ChipFieldImpl';
 
 export const ChipField = genericMemo(ChipFieldImpl);
 
-export interface ChipFieldProps<
-    RecordType extends Record<string, unknown> = Record<string, any>
-> extends FieldProps<RecordType>,
+export interface ChipFieldProps<RecordType extends {} = Record<string, any>>
+    extends FieldProps<RecordType>,
         Omit<ChipProps, 'label'> {}
 
 const PREFIX = 'RaChipField';

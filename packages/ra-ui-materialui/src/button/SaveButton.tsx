@@ -44,7 +44,7 @@ import {
  *     return <SaveButton {...props} mutationOptions={{ onSuccess }} />;
  * }
  */
-export const SaveButton = <RecordType extends RaRecord = any>(
+export const SaveButton = <RecordType extends RaRecord = RaRecord>(
     props: SaveButtonProps<RecordType>
 ) => {
     const {
@@ -155,7 +155,7 @@ const circularProgressStyle = {
 const defaultIcon = <ContentSave />;
 
 interface Props<
-    RecordType extends RaRecord = any,
+    RecordType extends RaRecord = RaRecord,
     MutationOptionsError = unknown
 > {
     className?: string;
@@ -172,7 +172,7 @@ interface Props<
     variant?: string;
 }
 
-export type SaveButtonProps<RecordType extends RaRecord = any> = Props<
+export type SaveButtonProps<RecordType extends RaRecord = RaRecord> = Props<
     RecordType
 > &
     ButtonProps & {

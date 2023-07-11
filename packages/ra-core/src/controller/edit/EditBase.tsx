@@ -35,7 +35,7 @@ import { ResourceContextProvider } from '../../core';
  *     </EditBase>
  * );
  */
-export const EditBase = <RecordType extends RaRecord = any>({
+export const EditBase = <RecordType extends RaRecord = RaRecord>({
     children,
     ...props
 }: { children: ReactNode } & EditControllerProps<RecordType>) => {

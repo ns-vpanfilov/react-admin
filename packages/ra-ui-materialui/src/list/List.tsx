@@ -57,7 +57,7 @@ import { ListView, ListViewProps } from './ListView';
  *     </List>
  * );
  */
-export const List = <RecordType extends RaRecord = any>({
+export const List = <RecordType extends RaRecord = RaRecord>({
     debounce,
     disableAuthentication,
     disableSyncWithLocation,
@@ -88,7 +88,7 @@ export const List = <RecordType extends RaRecord = any>({
     </ListBase>
 );
 
-export interface ListProps<RecordType extends RaRecord = any>
+export interface ListProps<RecordType extends RaRecord = RaRecord>
     extends ListControllerProps<RecordType>,
         ListViewProps {}
 

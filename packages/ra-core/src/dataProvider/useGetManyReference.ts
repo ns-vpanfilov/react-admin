@@ -59,7 +59,7 @@ import { useDataProvider } from './useDataProvider';
  *     )}</ul>;
  * };
  */
-export const useGetManyReference = <RecordType extends RaRecord = any>(
+export const useGetManyReference = <RecordType extends RaRecord = RaRecord>(
     resource: string,
     params: Partial<GetManyReferenceParams> = {},
     options?: UseQueryOptions<{ data: RecordType[]; total: number }, Error>
@@ -139,7 +139,7 @@ export const useGetManyReference = <RecordType extends RaRecord = any>(
 };
 
 export type UseGetManyReferenceHookValue<
-    RecordType extends RaRecord = any
+    RecordType extends RaRecord = RaRecord
 > = UseQueryResult<RecordType[], Error> & {
     total?: number;
     pageInfo?: {

@@ -36,9 +36,7 @@ import { genericMemo } from './genericMemo';
  * // renders the record { id: 1234, price: 25.99 } as
  * <span>25,99 $US</span>
  */
-const NumberFieldImpl = <
-    RecordType extends Record<string, unknown> = Record<string, any>
->(
+const NumberFieldImpl = <RecordType extends {} = Record<string, any>>(
     props: NumberFieldProps<RecordType>
 ) => {
     const {
@@ -104,9 +102,8 @@ NumberFieldImpl.defaultProps = {
 
 export const NumberField = genericMemo(NumberFieldImpl);
 
-export interface NumberFieldProps<
-    RecordType extends Record<string, unknown> = Record<string, any>
-> extends FieldProps<RecordType>,
+export interface NumberFieldProps<RecordType extends {} = Record<string, any>>
+    extends FieldProps<RecordType>,
         Omit<TypographyProps, 'textAlign'> {
     locales?: string | string[];
     options?: object;

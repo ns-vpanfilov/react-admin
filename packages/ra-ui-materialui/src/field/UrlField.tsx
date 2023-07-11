@@ -7,9 +7,7 @@ import { useRecordContext, useTranslate } from 'ra-core';
 import { FieldProps, fieldPropTypes } from './types';
 import { genericMemo } from './genericMemo';
 
-const UrlFieldImpl = <
-    RecordType extends Record<string, unknown> = Record<string, any>
->(
+const UrlFieldImpl = <RecordType extends {} = Record<string, any>>(
     props: UrlFieldProps<RecordType>
 ) => {
     const { className, emptyText, source, ...rest } = props;
@@ -48,9 +46,8 @@ UrlFieldImpl.displayName = 'UrlFieldImpl';
 
 export const UrlField = genericMemo(UrlFieldImpl);
 
-export interface UrlFieldProps<
-    RecordType extends Record<string, unknown> = Record<string, any>
-> extends FieldProps<RecordType>,
+export interface UrlFieldProps<RecordType extends {} = Record<string, any>>
+    extends FieldProps<RecordType>,
         AnchorHTMLAttributes<HTMLAnchorElement> {}
 
 // useful to prevent click bubbling in a Datagrid with rowClick

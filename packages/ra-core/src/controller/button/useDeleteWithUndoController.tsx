@@ -43,7 +43,7 @@ import { useResourceContext } from '../../core';
  *     );
  * };
  */
-const useDeleteWithUndoController = <RecordType extends RaRecord = any>(
+const useDeleteWithUndoController = <RecordType extends RaRecord = RaRecord>(
     props: UseDeleteWithUndoControllerParams<RecordType>
 ): UseDeleteWithUndoControllerReturn => {
     const {
@@ -123,7 +123,7 @@ const useDeleteWithUndoController = <RecordType extends RaRecord = any>(
 };
 
 export interface UseDeleteWithUndoControllerParams<
-    RecordType extends RaRecord = any,
+    RecordType extends RaRecord = RaRecord,
     MutationOptionsError = unknown
 > {
     record?: RecordType;

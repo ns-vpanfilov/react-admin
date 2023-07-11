@@ -65,7 +65,7 @@ import { useDataProvider } from './useDataProvider';
  *      );
  * };
  */
-export const useGetManyAggregate = <RecordType extends RaRecord = any>(
+export const useGetManyAggregate = <RecordType extends RaRecord = RaRecord>(
     resource: string,
     params: GetManyParams,
     options: UseQueryOptions<RecordType[], Error> = {}

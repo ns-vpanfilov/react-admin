@@ -35,7 +35,7 @@ import { ResourceContextProvider } from '../../core';
  *     </ShowBase>
  * );
  */
-export const ShowBase = <RecordType extends RaRecord = any>({
+export const ShowBase = <RecordType extends RaRecord = RaRecord>({
     children,
     ...props
 }: { children: ReactElement } & ShowControllerProps<RecordType>) => {

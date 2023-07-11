@@ -66,7 +66,7 @@ export default (params?: LocalStorageDataProviderParams): DataProvider => {
 
     return {
         // read methods are just proxies to FakeRest
-        getList: <RecordType extends RaRecord = any>(resource, params) =>
+        getList: <RecordType extends RaRecord = RaRecord>(resource, params) =>
             baseDataProvider
                 .getList<RecordType>(resource, params)
                 .catch(error => {
@@ -77,11 +77,11 @@ export default (params?: LocalStorageDataProviderParams): DataProvider => {
                         throw error;
                     }
                 }),
-        getOne: <RecordType extends RaRecord = any>(resource, params) =>
+        getOne: <RecordType extends RaRecord = RaRecord>(resource, params) =>
             baseDataProvider.getOne<RecordType>(resource, params),
-        getMany: <RecordType extends RaRecord = any>(resource, params) =>
+        getMany: <RecordType extends RaRecord = RaRecord>(resource, params) =>
             baseDataProvider.getMany<RecordType>(resource, params),
-        getManyReference: <RecordType extends RaRecord = any>(
+        getManyReference: <RecordType extends RaRecord = RaRecord>(
             resource,
             params
         ) =>
@@ -97,7 +97,7 @@ export default (params?: LocalStorageDataProviderParams): DataProvider => {
                 }),
 
         // update methods need to persist changes in localStorage
-        update: <RecordType extends RaRecord = any>(resource, params) => {
+        update: <RecordType extends RaRecord = RaRecord>(resource, params) => {
             updateLocalStorage(() => {
                 const index = data[resource]?.findIndex(
                     record => record.id == params.id
@@ -140,7 +140,7 @@ export default (params?: LocalStorageDataProviderParams): DataProvider => {
                     return response;
                 });
         },
-        delete: <RecordType extends RaRecord = any>(resource, params) => {
+        delete: <RecordType extends RaRecord = RaRecord>(resource, params) => {
             updateLocalStorage(() => {
                 const index = data[resource]?.findIndex(
                     record => record.id == params.id

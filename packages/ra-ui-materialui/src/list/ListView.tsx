@@ -19,7 +19,7 @@ const defaultPagination = <DefaultPagination />;
 const defaultEmpty = <Empty />;
 const DefaultComponent = Card;
 
-export const ListView = <RecordType extends RaRecord = any>(
+export const ListView = <RecordType extends RaRecord = RaRecord>(
     props: ListViewProps
 ) => {
     const {

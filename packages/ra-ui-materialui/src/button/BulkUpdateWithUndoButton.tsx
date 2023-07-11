@@ -19,10 +19,13 @@ import { UseMutationOptions } from 'react-query';
 import { Button, ButtonProps } from './Button';
 import { BulkActionProps } from '../types';
 
-export const BulkUpdateWithUndoButton = (
-    props: BulkUpdateWithUndoButtonProps
+export const BulkUpdateWithUndoButton = <
+    RecordType extends RaRecord = RaRecord,
+    MutationOptionsError = unknown
+>(
+    props: BulkUpdateWithUndoButtonProps<RecordType, MutationOptionsError>
 ) => {
-    const { selectedIds } = useListContext(props);
+    const { selectedIds } = useListContext<RecordType>(props);
 
     const notify = useNotify();
     const resource = useResourceContext(props);
@@ -67,7 +70,7 @@ export const BulkUpdateWithUndoButton = (
     } = props;
     const { meta: mutationMeta, ...otherMutationOptions } = mutationOptions;
 
-    const [updateMany, { isLoading }] = useUpdateMany(
+    const [updateMany, { isLoading }] = useUpdateMany<RecordType>(
         resource,
         { ids: selectedIds, data, meta: mutationMeta },
         {
@@ -109,7 +112,7 @@ const sanitizeRestProps = ({
 }: Omit<BulkUpdateWithUndoButtonProps, 'resource' | 'icon' | 'data'>) => rest;
 
 export interface BulkUpdateWithUndoButtonProps<
-    RecordType extends RaRecord = any,
+    RecordType extends RaRecord = RaRecord,
     MutationOptionsError = unknown
 > extends BulkActionProps,
         ButtonProps {
@@ -118,7 +121,7 @@ export interface BulkUpdateWithUndoButtonProps<
     onSuccess?: () => void;
     onError?: (error: any) => void;
     mutationOptions?: UseMutationOptions<
-        RecordType,
+        RecordType['id'][],
         MutationOptionsError,
         UpdateManyParams<RecordType>
     > & { meta?: any };

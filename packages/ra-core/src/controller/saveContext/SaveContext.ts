@@ -9,7 +9,7 @@ import {
 import { Middleware } from './useMutationMiddlewares';
 
 export interface SaveContextValue<
-    RecordType extends RaRecord = any,
+    RecordType extends RaRecord = RaRecord,
     MutateFunc extends (...args: any[]) => any = (...args: any[]) => any
 > {
     save?: SaveHandler<RecordType>;

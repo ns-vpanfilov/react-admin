@@ -8,7 +8,7 @@ import {
     RaRecord,
 } from 'react-admin';
 
-const PostPreview = <RecordType extends RaRecord = any>({
+const PostPreview = <RecordType extends RaRecord = RaRecord>({
     id,
     resource,
 }: {

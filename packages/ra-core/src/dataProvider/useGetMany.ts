@@ -49,7 +49,7 @@ import { useDataProvider } from './useDataProvider';
  *     )}</ul>;
  * };
  */
-export const useGetMany = <RecordType extends RaRecord = any>(
+export const useGetMany = <RecordType extends RaRecord = RaRecord>(
     resource: string,
     params: Partial<GetManyParams> = {},
     options?: UseQueryOptions<RecordType[], Error>
@@ -113,5 +113,5 @@ export const useGetMany = <RecordType extends RaRecord = any>(
 };
 
 export type UseGetManyHookValue<
-    RecordType extends RaRecord = any
+    RecordType extends RaRecord = RaRecord
 > = UseQueryResult<RecordType[], Error>;

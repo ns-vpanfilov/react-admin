@@ -8,9 +8,7 @@ import { sanitizeFieldRestProps } from './sanitizeFieldRestProps';
 import { FieldProps, fieldPropTypes } from './types';
 import { genericMemo } from './genericMemo';
 
-const EmailFieldImpl = <
-    RecordType extends Record<string, unknown> = Record<string, any>
->(
+const EmailFieldImpl = <RecordType extends {} = Record<string, any>>(
     props: EmailFieldProps<RecordType>
 ) => {
     const { className, source, emptyText, ...rest } = props;
@@ -49,9 +47,8 @@ EmailFieldImpl.displayName = 'EmailFieldImpl';
 
 export const EmailField = genericMemo(EmailFieldImpl);
 
-export interface EmailFieldProps<
-    RecordType extends Record<string, unknown> = Record<string, any>
-> extends FieldProps<RecordType>,
+export interface EmailFieldProps<RecordType extends {} = Record<string, any>>
+    extends FieldProps<RecordType>,
         Omit<LinkProps, 'textAlign'> {}
 
 // useful to prevent click bubbling in a Datagrid with rowClick

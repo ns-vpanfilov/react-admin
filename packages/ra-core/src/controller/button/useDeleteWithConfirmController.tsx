@@ -63,7 +63,7 @@ import { useResourceContext } from '../../core';
  *     );
  * };
  */
-const useDeleteWithConfirmController = <RecordType extends RaRecord = any>(
+const useDeleteWithConfirmController = <RecordType extends RaRecord = RaRecord>(
     props: UseDeleteWithConfirmControllerParams<RecordType>
 ): UseDeleteWithConfirmControllerReturn => {
     const {
@@ -165,7 +165,7 @@ const useDeleteWithConfirmController = <RecordType extends RaRecord = any>(
 };
 
 export interface UseDeleteWithConfirmControllerParams<
-    RecordType extends RaRecord = any,
+    RecordType extends RaRecord = RaRecord,
     MutationOptionsError = unknown
 > {
     mutationMode?: MutationMode;

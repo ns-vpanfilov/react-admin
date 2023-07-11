@@ -171,7 +171,7 @@ DatagridHeader.propTypes = {
     setSort: PropTypes.func,
 };
 
-export interface DatagridHeaderProps<RecordType extends RaRecord = any> {
+export interface DatagridHeaderProps<RecordType extends RaRecord = RaRecord> {
     children?: React.ReactNode;
     className?: string;
     hasExpand?: boolean;

@@ -8,9 +8,7 @@ import { sanitizeFieldRestProps } from './sanitizeFieldRestProps';
 import { FieldProps, fieldPropTypes } from './types';
 import { genericMemo } from './genericMemo';
 
-const TextFieldImpl = <
-    RecordType extends Record<string, unknown> = Record<string, any>
->(
+const TextFieldImpl = <RecordType extends {} = Record<string, any>>(
     props: TextFieldProps<RecordType>
 ) => {
     const { className, source, emptyText, ...rest } = props;
@@ -44,9 +42,8 @@ TextFieldImpl.displayName = 'TextFieldImpl';
 
 export const TextField = genericMemo(TextFieldImpl);
 
-export interface TextFieldProps<
-    RecordType extends Record<string, unknown> = Record<string, any>
-> extends FieldProps<RecordType>,
+export interface TextFieldProps<RecordType extends {} = Record<string, any>>
+    extends FieldProps<RecordType>,
         Omit<TypographyProps, 'textAlign'> {
     // TypographyProps do not expose the component props, see https://github.com/mui/material-ui/issues/19512
     component?: ElementType<any>;

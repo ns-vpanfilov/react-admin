@@ -136,7 +136,7 @@ SingleFieldList.propTypes = {
     ]),
 };
 
-export interface SingleFieldListProps<RecordType extends RaRecord = any>
+export interface SingleFieldListProps<RecordType extends RaRecord = RaRecord>
     extends HtmlHTMLAttributes<HTMLDivElement> {
     className?: string;
 

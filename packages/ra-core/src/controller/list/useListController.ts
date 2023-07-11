@@ -29,7 +29,7 @@ import { useListParams } from './useListParams';
  *     return <ListView {...controllerProps} {...props} />;
  * }
  */
-export const useListController = <RecordType extends RaRecord = any>(
+export const useListController = <RecordType extends RaRecord = RaRecord>(
     props: ListControllerProps<RecordType> = {}
 ): ListControllerResult<RecordType> => {
     const {
@@ -178,7 +178,7 @@ export const useListController = <RecordType extends RaRecord = any>(
     };
 };
 
-export interface ListControllerProps<RecordType extends RaRecord = any> {
+export interface ListControllerProps<RecordType extends RaRecord = RaRecord> {
     debounce?: number;
     disableAuthentication?: boolean;
     /**
@@ -207,7 +207,7 @@ const defaultSort = {
     order: SORT_ASC,
 };
 
-export interface ListControllerResult<RecordType extends RaRecord = any> {
+export interface ListControllerResult<RecordType extends RaRecord = RaRecord> {
     sort: SortPayload;
     data: RecordType[];
     defaultTitle?: string;

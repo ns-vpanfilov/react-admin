@@ -45,7 +45,7 @@ export const CreateView = (props: CreateViewProps) => {
     );
 };
 
-interface CreateViewProps<RecordType extends RaRecord = any>
+interface CreateViewProps<RecordType extends RaRecord = RaRecord>
     extends CreateProps<RecordType>,
         Omit<CreateControllerProps<RecordType>, 'resource'> {
     children: ReactNode;

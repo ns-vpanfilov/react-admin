@@ -50,7 +50,7 @@ import { DeleteWithConfirmButton } from './DeleteWithConfirmButton';
  *     return <Edit actions={<EditActions />} {...props} />;
  * };
  */
-export const DeleteButton = <RecordType extends RaRecord = any>(
+export const DeleteButton = <RecordType extends RaRecord = RaRecord>(
     props: DeleteButtonProps<RecordType>
 ) => {
     const { mutationMode, ...rest } = props;
@@ -80,7 +80,7 @@ export const DeleteButton = <RecordType extends RaRecord = any>(
 };
 
 export interface DeleteButtonProps<
-    RecordType extends RaRecord = any,
+    RecordType extends RaRecord = RaRecord,
     MutationOptionsError = unknown
 > extends ButtonProps,
         SaveContextValue {

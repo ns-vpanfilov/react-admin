@@ -51,7 +51,7 @@ import { useDataProvider } from './useDataProvider';
  *     )}</ul>;
  * };
  */
-export const useGetList = <RecordType extends RaRecord = any>(
+export const useGetList = <RecordType extends RaRecord = RaRecord>(
     resource: string,
     params: Partial<GetListParams> = {},
     options?: UseQueryOptions<GetListResult<RecordType>, Error>
@@ -122,7 +122,7 @@ export const useGetList = <RecordType extends RaRecord = any>(
 };
 
 export type UseGetListHookValue<
-    RecordType extends RaRecord = any
+    RecordType extends RaRecord = RaRecord
 > = UseQueryResult<RecordType[], Error> & {
     total?: number;
     pageInfo?: {

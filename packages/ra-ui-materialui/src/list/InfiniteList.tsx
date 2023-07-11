@@ -64,7 +64,7 @@ import { ListView, ListViewProps } from './ListView';
  *     </List>
  * );
  */
-export const InfiniteList = <RecordType extends RaRecord = any>({
+export const InfiniteList = <RecordType extends RaRecord = RaRecord>({
     debounce,
     disableAuthentication,
     disableSyncWithLocation,
@@ -98,7 +98,7 @@ export const InfiniteList = <RecordType extends RaRecord = any>({
 
 const defaultPagination = <InfinitePagination />;
 
-export interface InfiniteListProps<RecordType extends RaRecord = any>
+export interface InfiniteListProps<RecordType extends RaRecord = RaRecord>
     extends InfiniteListControllerProps<RecordType>,
         ListViewProps {}
 

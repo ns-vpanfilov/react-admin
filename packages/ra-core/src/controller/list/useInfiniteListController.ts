@@ -39,7 +39,9 @@ import { ListControllerResult } from './useListController';
  *     return <ListView {...controllerProps} {...props} />;
  * }
  */
-export const useInfiniteListController = <RecordType extends RaRecord = any>(
+export const useInfiniteListController = <
+    RecordType extends RaRecord = RaRecord
+>(
     props: InfiniteListControllerProps<RecordType> = {}
 ): InfiniteListControllerResult<RecordType> => {
     const {
@@ -199,7 +201,7 @@ export const useInfiniteListController = <RecordType extends RaRecord = any>(
 };
 
 export interface InfiniteListControllerProps<
-    RecordType extends RaRecord = any
+    RecordType extends RaRecord = RaRecord
 > {
     debounce?: number;
     disableAuthentication?: boolean;
@@ -221,8 +223,9 @@ export interface InfiniteListControllerProps<
     storeKey?: string | false;
 }
 
-export interface InfiniteListControllerResult<RecordType extends RaRecord = any>
-    extends ListControllerResult<RecordType> {
+export interface InfiniteListControllerResult<
+    RecordType extends RaRecord = RaRecord
+> extends ListControllerResult<RecordType> {
     fetchNextPage: InfiniteQueryObserverBaseResult<
         GetInfiniteListResult<RecordType>
     >['fetchNextPage'];

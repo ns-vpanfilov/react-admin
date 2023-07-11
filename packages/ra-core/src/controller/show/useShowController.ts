@@ -45,7 +45,7 @@ import {
  *     return <ShowView {...controllerProps} />;
  * };
  */
-export const useShowController = <RecordType extends RaRecord = any>(
+export const useShowController = <RecordType extends RaRecord = RaRecord>(
     props: ShowControllerProps<RecordType> = {}
 ): ShowControllerResult<RecordType> => {
     const { disableAuthentication, id: propsId, queryOptions = {} } = props;
@@ -108,14 +108,14 @@ export const useShowController = <RecordType extends RaRecord = any>(
     };
 };
 
-export interface ShowControllerProps<RecordType extends RaRecord = any> {
+export interface ShowControllerProps<RecordType extends RaRecord = RaRecord> {
     disableAuthentication?: boolean;
     id?: RecordType['id'];
     queryOptions?: UseQueryOptions<RecordType> & { meta?: any };
     resource?: string;
 }
 
-export interface ShowControllerResult<RecordType extends RaRecord = any> {
+export interface ShowControllerResult<RecordType extends RaRecord = RaRecord> {
     defaultTitle: string;
     // Necessary for actions (EditActions) which expect a data prop containing the record
     // @deprecated - to be removed in 4.0d

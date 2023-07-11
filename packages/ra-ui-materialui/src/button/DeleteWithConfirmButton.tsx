@@ -18,7 +18,7 @@ import {
 import { Confirm } from '../layout';
 import { Button, ButtonProps } from './Button';
 
-export const DeleteWithConfirmButton = <RecordType extends RaRecord = any>(
+export const DeleteWithConfirmButton = <RecordType extends RaRecord = RaRecord>(
     props: DeleteWithConfirmButtonProps<RecordType>
 ) => {
     const {
@@ -95,7 +95,7 @@ export const DeleteWithConfirmButton = <RecordType extends RaRecord = any>(
 const defaultIcon = <ActionDelete />;
 
 export interface DeleteWithConfirmButtonProps<
-    RecordType extends RaRecord = any,
+    RecordType extends RaRecord = RaRecord,
     MutationOptionsError = unknown
 > extends ButtonProps {
     confirmTitle?: string;

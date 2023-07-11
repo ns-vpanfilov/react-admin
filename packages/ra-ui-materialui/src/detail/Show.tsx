@@ -58,7 +58,7 @@ import { ShowView } from './ShowView';
  *
  * @see ShowView for the actual rendering
  */
-export const Show = <RecordType extends RaRecord = any>({
+export const Show = <RecordType extends RaRecord = RaRecord>({
     id,
     resource,
     queryOptions,

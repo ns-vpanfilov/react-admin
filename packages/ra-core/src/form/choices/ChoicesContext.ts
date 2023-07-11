@@ -11,7 +11,7 @@ export const ChoicesContext = createContext<ChoicesContextValue | undefined>(
     undefined
 );
 
-export type ChoicesContextValue<RecordType extends RaRecord = any> = {
+export type ChoicesContextValue<RecordType extends RaRecord = RaRecord> = {
     allChoices: RecordType[];
     availableChoices: RecordType[];
     displayedFilters: any;
